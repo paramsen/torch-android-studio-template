@@ -6,3 +6,11 @@
 /build
 /captures
 *.externalNativeBuild
+native-libs/arm64-v8a/
+native-libs/armeabi-v7a/
+native-libs/headers/
+src/main/assets/lua/
+src/main/assets/mockAsciiNet.net
+src/main/native/Constants.h
+src/main/native/Log.h
+src/main/res/drawable/

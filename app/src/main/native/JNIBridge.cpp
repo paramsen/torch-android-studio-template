@@ -9,15 +9,15 @@
 #include <android/asset_manager.h>
 #include <string.h>
 #include "Torch.h"
-
-#define INPUT_LENGTH 128
+#include "Log.h"
+#include "Constants.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 Torch *torch;
-float *sharedBuffer;
+float *buffer;
 
 bool initialized = false;
 
@@ -28,9 +28,11 @@ Java_com_paramsen_torchtemple_torch_JNIBridge_nSetup(JNIEnv *env, jobject jThis,
         const char *nativeSrcPath = env->GetStringUTFChars(jNativeSrcPath, 0);
         const char *torchNetPath = env->GetStringUTFChars(jTorchNetPath, 0);
 
-        sharedBuffer = (float*) malloc(sizeof(float) * INPUT_LENGTH);
-        torch = new Torch(assetManager, nativeSrcPath, torchNetPath, sharedBuffer, INPUT_LENGTH);
+        buffer = (float*) malloc(sizeof(float) * INPUT_LENGTH);
+        torch = new Torch(assetManager, nativeSrcPath, torchNetPath);
         initialized = true;
+    } else {
+        lW("Already setup");
     }
 }
 
@@ -42,9 +44,10 @@ Java_com_paramsen_torchtemple_torch_JNIBridge_nSetup(JNIEnv *env, jobject jThis,
 JNIEXPORT jfloat JNICALL
 Java_com_paramsen_torchtemple_torch_JNIBridge_nCall(JNIEnv *env, jobject jThis, jfloatArray jData) {
     if(initialized) {
-        memcpy(sharedBuffer, env->GetFloatArrayElements(jData, 0), INPUT_LENGTH);
-        return torch->call(); //a nonsense value from our stub net
+        memcpy(buffer, env->GetFloatArrayElements(jData, 0), INPUT_LENGTH);
+        return torch->call(buffer); //a nonsense value from our stub net
     } else {
+        lW("Not setup");
         return INT32_MIN;
     }
 }
@@ -53,8 +56,10 @@ JNIEXPORT void JNICALL
 Java_com_paramsen_torchtemple_torch_JNIBridge_nDispose(JNIEnv *env, jobject jThis) {
     if(initialized) {
         delete torch;
-        free(sharedBuffer);
+        free(buffer);
         initialized = false;
+    } else {
+        lW("Not setup");
     }
 }
 

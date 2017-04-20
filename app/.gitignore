@@ -1,1 +1,11 @@
 /build
+/.externalNativeBuild
+/src/main/assets/lua/*
+/native-libs/arm64-v8a/*
+/native-libs/armeabi-v7a/*
+/native-libs/headers/*
+
+!/src/main/assets/lua/.keep
+!/native-libs/arm64-v8a/.keep
+!/native-libs/armeabi-v7a/.keep
+!/native-libs/headers/.keep

@@ -10,13 +10,11 @@
 
 class Torch {
 public:
-    Torch(AAssetManager *assetManager, const char *nativeSrcPath, const char *torchNetPath, float *sharedBuffer, int32_t bufferSize);
+    Torch(AAssetManager *assetManager, const char *nativeSrcPath, const char *torchNetPath);
     ~Torch();
-    float call();
+    float call(float *data);
     lua_State *lua;
 private:
-    float *sharedBuffer;
-    int32_t bufferSize;
     THFloatStorage *tensorStorage;
     THFloatTensor *tensor;
 };

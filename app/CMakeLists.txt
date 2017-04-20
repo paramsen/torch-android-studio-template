@@ -90,7 +90,7 @@ if(NOT ${X86})
 
     # Include header files
     target_include_directories( native PRIVATE
-                                ${CMAKE_SOURCE_DIR}/native-libs/include
+                                ${CMAKE_SOURCE_DIR}/native-libs/headers
                                 ${CMAKE_SOURCE_DIR}/src/main/native )
 
     target_link_libraries( native
@@ -118,6 +118,11 @@ else()
 
     find_library( android-lib
                   android )
+
+    # Include header files
+    target_include_directories( native PRIVATE
+                                ${CMAKE_SOURCE_DIR}/native-libs/headers
+                                ${CMAKE_SOURCE_DIR}/src/main/native )
 
     target_link_libraries( native
 

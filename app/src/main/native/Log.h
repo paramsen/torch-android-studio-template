@@ -1,5 +1,5 @@
 /**
- * Short syntax for printing to Android log cat
+ * Defs for logging to Android logcat
  *
  * @author Pär Amsen 04/2017
  */
@@ -9,8 +9,9 @@
 
 #include <android/log.h>
 
-#  define  lD(x...)  __android_log_print(ANDROID_LOG_DEBUG, "TorchTemple", x)
-#  define  lW(x...)  __android_log_print(ANDROID_LOG_WARN, "TorchTemple", x)
-#  define  lE(x...)  __android_log_print(ANDROID_LOG_ERROR, "TorchTemple", x)
+#define TAG "Native"
+#define  lD(args...)  __android_log_print(ANDROID_LOG_DEBUG, TAG, args)
+#define  lW(args...)  __android_log_print(ANDROID_LOG_WARN, TAG, args)
+#define  lE(args...)  __android_log_print(ANDROID_LOG_ERROR, TAG, args)
 
 #endif //TORCH_ANDROID_STUDIO_TEMPLATE_LOG_H

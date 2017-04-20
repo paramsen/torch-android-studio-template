@@ -1,6 +1,5 @@
 /**
- * This is a stub loaded when on x86. Torch isn't supported on x86 devices, but that's a matter for
- * Java to handle.
+ * This is a stub loaded when on x86. Torch isn't supported on x86 devices.
  *
  * @author Pär Amsen 04/2017
  */
@@ -18,10 +17,10 @@ Java_com_paramsen_torchtemple_torch_JNIBridge_nSetup(JNIEnv *env, jobject jThis,
     lW("Torch cannot be initialized on x86");
 }
 
-JNIEXPORT float JNICALL
+JNIEXPORT jfloat JNICALL
 Java_com_paramsen_torchtemple_torch_JNIBridge_nCall(JNIEnv *env, jobject jThis, jfloatArray data) {
     lW("Torch cannot be initialized on x86");
-    return INT16_MIN;
+    return (jfloat) INT16_MIN;
 }
 
 JNIEXPORT void JNICALL

@@ -31,6 +31,7 @@ Java_com_paramsen_torchtemple_torch_JNIBridge_nSetup(JNIEnv *env, jobject jThis,
         buffer = (float*) malloc(sizeof(float) * INPUT_LENGTH);
         torch = new Torch(assetManager, nativeSrcPath, torchNetPath);
         initialized = true;
+        lW("Setup success");
     } else {
         lW("Already setup");
     }
@@ -48,7 +49,7 @@ Java_com_paramsen_torchtemple_torch_JNIBridge_nCall(JNIEnv *env, jobject jThis, 
         return torch->call(buffer); //a nonsense value from our stub net
     } else {
         lW("Not setup");
-        return INT32_MIN;
+        return (jfloat) INT32_MIN;
     }
 }
 

@@ -7,7 +7,7 @@ import android.os.Build;
  */
 public class JNIBridge {
     public boolean setup() {
-        if(isTorchSupported()) {
+        if (isTorchSupported()) {
             nSetup();
             return true;
         }
@@ -40,6 +40,8 @@ public class JNIBridge {
     }
 
     private native void nSetup();
+
     private native float nCall(float[] data);
+
     private native void nDispose();
 }

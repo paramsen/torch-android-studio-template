@@ -38,12 +38,12 @@ Torch can be initialized, destroyed and initialized again without any problems.
 The integration between Java, C and lua (Torch) is pretty simple in this project. Hopefully the code is self-documenting.
 
 <p align="center">
-  <img src="https://github.com/paramsen/torch-android-studio-template/blob/master/optimized-flow-chart.jpg" alt="Preview flow chart"/>
+  <img src="https://github.com/paramsen/torch-android-studio-template/blob/master/optimized-flow-chart.jpg" alt="Preview flow chart" height=500/>
 </p>
 
 ## Troubleshooting
 
-Issues goes here, questions might be more fitting here [paramsen.github.io](https://paramsen.github.io/torch-android-vagrant-build-box/) in the comments section.
+Issues goes here, questions might be more fitting here [paramsen.github.io](https://paramsen.github.io/torch-cmake-and-android-studio/) in the comments section.
 
 ## License
 
